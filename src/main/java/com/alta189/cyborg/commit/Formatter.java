@@ -64,6 +64,11 @@ public class Formatter {
 				Cyborg.getInstance().sendMessage(channel, "\u000306" + Colors.BOLD + repo.getName() + Colors.NORMAL + ": " + "\u000303" + commit.getAuthor().getName() + " " + Colors.MAGENTA + repo.getBranch() + Colors.NORMAL + " - " + Colors.BLUE + commit.getShortURL());
 				Cyborg.getInstance().sendMessage(channel, "    Files Added: " + Colors.RED + commit.getAdded().size() + Colors.NORMAL + "   Files Removed: " + Colors.RED + commit.getRemoved().size() + Colors.NORMAL + "   Files Modified: " + Colors.RED + commit.getModified().size());
 				for (String msg : commit.getMessage().split("\n")) {
+					if (msg == null || msg.isEmpty()) {
+						continue;
+					} else if (msg.startsWith("Signed-off-by:") && !CyborgCommit.getConfig().getBoolean("signoff")) {
+						continue;
+					}
 					Cyborg.getInstance().sendMessage(channel, Colors.BLUE + "    - '" + Colors.NORMAL + msg + Colors.BLUE + "'");
 				}
 			}
@@ -73,7 +78,7 @@ public class Formatter {
 	public Repository getRepo() {
 		return this.repo;
 	}
-	
+
 	public List<Commit> getCommits() {
 		return commits;
 	}

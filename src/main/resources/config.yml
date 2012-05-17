@@ -3,6 +3,7 @@ short-url:
    type: BIT_LY
    user:
    apikey:
+signoff: true
 database:
    driver: MySQL
    mysql:
