@@ -1,0 +1,13 @@
+listen-port: 5555
+short-url:
+   type: BIT_LY
+   user:
+   apikey:
+database:
+   driver: MySQL
+   mysql:
+      host:
+      port:
+      database:
+      user:
+      password:
