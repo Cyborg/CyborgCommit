@@ -19,12 +19,13 @@
 package com.alta189.cyborg.commit;
 
 import com.alta189.cyborg.Cyborg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import org.pircbotx.Channel;
 import org.pircbotx.Colors;
 import org.yaml.snakeyaml.Yaml;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Formatter {
 	private List<Commit> commits = new ArrayList<Commit>();

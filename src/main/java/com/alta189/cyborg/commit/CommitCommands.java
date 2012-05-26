@@ -24,6 +24,7 @@ import com.alta189.cyborg.api.command.CommandSource;
 import com.alta189.cyborg.api.command.ReturnType;
 import com.alta189.cyborg.api.command.annotation.Command;
 import com.alta189.cyborg.api.util.StringUtils;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -100,7 +101,6 @@ public class CommitCommands {
 		getDatabase().save(CommitChannel.class, channel);
 
 		return get(ReturnType.MESSAGE, "Unsubscribed from project '" + project + "'", source, context);
-
 	}
 
 	@Command(name = "setauthor", desc = "Sets an author's display name", aliases = {"addauthor"})

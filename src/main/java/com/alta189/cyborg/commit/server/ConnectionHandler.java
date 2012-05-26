@@ -24,12 +24,13 @@ import com.alta189.cyborg.api.util.CollectionUtil;
 import com.alta189.cyborg.commit.CommitChannel;
 import com.alta189.cyborg.commit.Formatter;
 import com.alta189.cyborg.commit.PushReceivedEvent;
+import org.pircbotx.Channel;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.URLDecoder;
-import org.pircbotx.Channel;
 
 import static com.alta189.cyborg.commit.CyborgCommit.getDatabase;
 
@@ -96,7 +97,6 @@ public class ConnectionHandler extends Thread {
 			}
 			System.out.println("Calling event PushReceivedEvent");
 			Cyborg.getInstance().getEventManager().callEvent(new PushReceivedEvent(formatter.getRepo(), formatter.getCommits()));
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

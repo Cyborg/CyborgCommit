@@ -21,20 +21,21 @@ package com.alta189.cyborg.commit;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
+
 import java.util.Collections;
 import java.util.List;
 
 public class PushReceivedEvent extends Event {
-	
+
 	public static final HandlerList handlers = new HandlerList();
 	private final Repository repository;
 	private final List<Commit> commits;
 	private final long timestamp;
-	
+
 	public PushReceivedEvent(Repository repository, List<Commit> commits) {
 		this(repository, commits, System.currentTimeMillis());
 	}
-	
+
 	public PushReceivedEvent(Repository repository, List<Commit> commits, long timestamp) {
 		this.repository = repository;
 		this.commits = Collections.unmodifiableList(commits);
@@ -57,9 +58,8 @@ public class PushReceivedEvent extends Event {
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-	
+
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
-
 }

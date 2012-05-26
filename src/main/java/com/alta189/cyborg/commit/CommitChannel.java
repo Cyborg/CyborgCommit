@@ -22,24 +22,25 @@ package com.alta189.cyborg.commit;
 import com.alta189.simplesave.Field;
 import com.alta189.simplesave.Id;
 import com.alta189.simplesave.Table;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "commitchannel")
 public class CommitChannel {
-	
+
 	@Id
 	int id;
-	
+
 	@Field
 	private String channel;
-	
-	@Field 
+
+	@Field
 	private String projects;
-	
+
 	// Non-persistent data
 	private final List<String> projectsList = new ArrayList<String>();
-	
+
 	public int getId() {
 		return id;
 	}
@@ -51,11 +52,11 @@ public class CommitChannel {
 	public void setChannel(String channel) {
 		this.channel = channel;
 	}
-	
+
 	public List<String> getProjects() {
 		return projectsList;
 	}
-	
+
 	public void addProject(String project) {
 		projectsList.add(project.toLowerCase());
 	}

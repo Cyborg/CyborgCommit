@@ -29,6 +29,7 @@ import com.alta189.simplesave.exceptions.ConnectionException;
 import com.alta189.simplesave.exceptions.TableRegistrationException;
 import com.alta189.simplesave.mysql.MySQLConfiguration;
 import com.alta189.simplesave.mysql.MySQLConstants;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,12 +37,12 @@ import java.io.InputStream;
 import java.util.logging.Level;
 
 public class CyborgCommit extends CommonPlugin {
-	
-	private static CyborgCommit instance;	
+
+	private static CyborgCommit instance;
 	private YAMLProcessor config;
 	private Database db;
 	private Server server;
-	
+
 	@Override
 	public void onEnable() {
 		instance = this;
@@ -53,7 +54,7 @@ public class CyborgCommit extends CommonPlugin {
 		dbConfig.setDatabase(getConfig().getString("database.mysql.database"));
 		dbConfig.setUser(getConfig().getString("database.mysql.user", MySQLConstants.DefaultUser));
 		dbConfig.setPassword(getConfig().getString("database.mysql.password", MySQLConstants.DefaultPass));
-		
+
 		db = DatabaseFactory.createNewDatabase(dbConfig);
 
 		try {
@@ -72,12 +73,12 @@ public class CyborgCommit extends CommonPlugin {
 		ShortUrlService.setService(ShortUrlService.Service.valueOf(config.getString("short-url.type", "BIT_LY").toUpperCase()));
 		ShortUrlService.setUser(config.getString("short-url.user", null));
 		ShortUrlService.setApiKey(config.getString("short-url.apikey", null));
-		
+
 		server = new Server(config.getInt("listen-port", 5555));
 		server.start();
-		
+
 		getCyborg().getCommandManager().registerCommands(this, CommitCommands.class, new EmptyConstructorInjector());
-		
+
 		getLogger().log(Level.INFO, "Successfully enabled!");
 	}
 
@@ -95,7 +96,7 @@ public class CyborgCommit extends CommonPlugin {
 		getLogger().log(Level.INFO, "Successfully disabled!");
 		instance = null;
 	}
-	
+
 	public static YAMLProcessor getConfig() {
 		if (instance.config == null) {
 			instance.config = instance.setupConfig(new File(instance.getDataFolder(), "config.yml"));
@@ -107,7 +108,7 @@ public class CyborgCommit extends CommonPlugin {
 		}
 		return instance.config;
 	}
-	
+
 	public static Database getDatabase() {
 		return instance.db;
 	}

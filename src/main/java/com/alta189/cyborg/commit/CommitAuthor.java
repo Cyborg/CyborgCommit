@@ -25,13 +25,13 @@ import com.alta189.simplesave.Table;
 
 @Table(name = "commitauthor")
 public class CommitAuthor {
-	
-	@Id 
+
+	@Id
 	private int id;
-	
+
 	@Field
 	private String name;
-	
+
 	@Field
 	private String formattedName;
 
