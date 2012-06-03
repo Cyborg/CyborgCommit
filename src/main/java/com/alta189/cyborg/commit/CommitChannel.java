@@ -26,7 +26,7 @@ import com.alta189.simplesave.Table;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "commitchannel")
+@Table("commitchannel")
 public class CommitChannel {
 
 	@Id
