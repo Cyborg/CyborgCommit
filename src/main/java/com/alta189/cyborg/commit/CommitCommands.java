@@ -23,6 +23,7 @@ import com.alta189.cyborg.api.command.CommandResult;
 import com.alta189.cyborg.api.command.CommandSource;
 import com.alta189.cyborg.api.command.ReturnType;
 import com.alta189.cyborg.api.command.annotation.Command;
+import com.alta189.cyborg.api.command.annotation.Usage;
 import com.alta189.cyborg.api.util.StringUtils;
 
 import java.util.regex.Matcher;
@@ -36,6 +37,7 @@ public class CommitCommands {
 	private static Pattern splitPattern = Pattern.compile("\\w+|\"[\\w\\s]*\"");
 
 	@Command(name = "cadd", desc = "Removes a project from a channel's report list", aliases = {"commitadd", "subscribe", "sub"})
+	@Usage(".cadd project...")
 	public CommandResult subscribe(CommandSource source, CommandContext context) {
 		if (source.getSource() != CommandSource.Source.USER || context.getLocationType() != CommandContext.LocationType.CHANNEL) {
 			return get(ReturnType.NOTICE, "This command has to be done in a channel!", source, context);
@@ -71,6 +73,7 @@ public class CommitCommands {
 	}
 
 	@Command(name = "crem", desc = "Removes a project from a channel's report list", aliases = {"commitrem", "unsubscribe", "unsub"})
+	@Usage(".crem project...")
 	public CommandResult unsubscribe(CommandSource source, CommandContext context) {
 		if (source.getSource() != CommandSource.Source.USER || context.getLocationType() != CommandContext.LocationType.CHANNEL) {
 			return get(ReturnType.NOTICE, "This command has to be done in a channel!", source, context);
@@ -104,6 +107,7 @@ public class CommitCommands {
 	}
 
 	@Command(name = "setauthor", desc = "Sets an author's display name", aliases = {"addauthor"})
+	@Usage(".setauthor \"author name\" \"author nane\"")
 	public CommandResult setauthor(CommandSource source, CommandContext context) {
 		if (source.getSource() != CommandSource.Source.USER || context.getLocationType() != CommandContext.LocationType.CHANNEL) {
 			return get(ReturnType.NOTICE, "This command has to be done in channel!", source, context);
